@@ -13,6 +13,9 @@ import { RegisterPage } from './pages/auth/RegisterPage';
 import { EntrepreneurDashboard } from './pages/dashboard/EntrepreneurDashboard';
 import { InvestorDashboard } from './pages/dashboard/InvestorDashboard';
 
+// Meeting page
+import Meetings from './pages/meeting/Meetings';
+
 // Profile Pages
 import { EntrepreneurProfile } from './pages/profile/EntrepreneurProfile';
 import { InvestorProfile } from './pages/profile/InvestorProfile';
@@ -66,6 +69,10 @@ function App() {
           
           <Route path="/notifications" element={<DashboardLayout />}>
             <Route index element={<NotificationsPage />} />
+          </Route>
+
+          <Route path="/meetings" element={<DashboardLayout />}>
+          <Route index element={<Meetings />} />
           </Route>
           
           <Route path="/documents" element={<DashboardLayout />}>
