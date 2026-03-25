@@ -16,6 +16,9 @@ import { InvestorDashboard } from './pages/dashboard/InvestorDashboard';
 // Meeting page
 import Meetings from './pages/meeting/Meetings';
 
+//video call
+import VideoCall from './pages/video-call/VideoCall';
+
 // Profile Pages
 import { EntrepreneurProfile } from './pages/profile/EntrepreneurProfile';
 import { InvestorProfile } from './pages/profile/InvestorProfile';
@@ -73,6 +76,11 @@ function App() {
 
           <Route path="/meetings" element={<DashboardLayout />}>
           <Route index element={<Meetings />} />
+          </Route>
+
+          {/* video call */}
+          <Route path="/video-call" element={<DashboardLayout />}>
+            <Route index element={<VideoCall />} />
           </Route>
           
           <Route path="/documents" element={<DashboardLayout />}>

@@ -1,14 +1,28 @@
-// src/pages/meeting/Meetings.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Video } from 'lucide-react';
 
 const Meetings: React.FC = () => {
   return (
     <div className="space-y-6">
+
       {/* Header */}
-      <h1 className="text-3xl font-bold mb-2">Meetings</h1>
-      <p className="text-gray-500 mb-6">
-        Schedule and manage your meetings
-      </p>
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-3xl font-bold mb-2">Meetings</h1>
+          <p className="text-gray-500">
+            Schedule and manage your meetings
+          </p>
+        </div>
+
+        {/* ✅ Video Call Button */}
+        <Link to="/video-call">
+          <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium shadow">
+            <Video size={18} />
+            Video Call
+          </button>
+        </Link>
+      </div>
 
       {/* Top Section */}
       <div className="grid grid-cols-2 gap-6">
