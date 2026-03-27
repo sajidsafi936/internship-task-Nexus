@@ -19,9 +19,15 @@ import Meetings from './pages/meeting/Meetings';
 //video call
 import VideoCall from './pages/video-call/VideoCall';
 
+//wallet
+import Wallet from'./pages/wallet/Wallet';
+
 // Profile Pages
 import { EntrepreneurProfile } from './pages/profile/EntrepreneurProfile';
 import { InvestorProfile } from './pages/profile/InvestorProfile';
+
+//opt
+import OTP from './pages/auth/OTP';
 
 // Feature Pages
 import { InvestorsPage } from './pages/investors/InvestorsPage';
@@ -78,10 +84,18 @@ function App() {
           <Route index element={<Meetings />} />
           </Route>
 
+          {/* wallet */}
+          <Route path="/wallet" element={<DashboardLayout />}>
+          <Route index element={<Wallet />} />
+          </Route>
+
           {/* video call */}
           <Route path="/video-call" element={<DashboardLayout />}>
             <Route index element={<VideoCall />} />
           </Route>
+
+          {/* opt */}
+          <Route path="/otp" element={<OTP />} />
           
           <Route path="/documents" element={<DashboardLayout />}>
             <Route index element={<DocumentsPage />} />

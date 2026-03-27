@@ -4,6 +4,7 @@ import { Lock } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
+import PasswordStrength from './PasswordStrength'; // ✅ ADD
 
 export const ResetPasswordPage: React.FC = () => {
   const [password, setPassword] = useState('');
@@ -18,13 +19,9 @@ export const ResetPasswordPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!token) {
-      return;
-    }
+    if (!token) return;
     
-    if (password !== confirmPassword) {
-      return;
-    }
+    if (password !== confirmPassword) return;
     
     setIsLoading(true);
     
@@ -32,7 +29,7 @@ export const ResetPasswordPage: React.FC = () => {
       await resetPassword(token, password);
       navigate('/login');
     } catch (error) {
-      // Error is handled by the AuthContext
+      // handled in context
     } finally {
       setIsLoading(false);
     }
@@ -76,16 +73,26 @@ export const ResetPasswordPage: React.FC = () => {
         
         <div className="mt-8 bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
-            <Input
-              label="New password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              fullWidth
-              startAdornment={<Lock size={18} />}
-            />
             
+            {/* PASSWORD */}
+            <div>
+              <Input
+                label="New password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                fullWidth
+                startAdornment={<Lock size={18} />}
+              />
+
+              {/* ✅ PASSWORD STRENGTH */}
+              <div className="mt-2">
+                <PasswordStrength password={password} />
+              </div>
+            </div>
+            
+            {/* CONFIRM PASSWORD */}
             <Input
               label="Confirm new password"
               type="password"
@@ -104,6 +111,7 @@ export const ResetPasswordPage: React.FC = () => {
             >
               Reset password
             </Button>
+
           </form>
         </div>
       </div>
